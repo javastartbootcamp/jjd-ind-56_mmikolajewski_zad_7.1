@@ -1,7 +1,5 @@
 package pl.javastart.task;
 
-import java.util.Arrays;
-
 public class PalindromeService {
 
     // nie zmieniaj sygnatury tej metody. Jest ona testowana w PalindromeServiceTest
