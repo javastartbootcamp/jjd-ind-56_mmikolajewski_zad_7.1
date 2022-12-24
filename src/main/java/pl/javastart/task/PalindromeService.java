@@ -6,34 +6,22 @@ public class PalindromeService {
     public boolean isPalindrome(int[] array) {
         if (array == null) {
             return false;
-        } else {
-            int[] reverseArray = new int[array.length];
-            for (int i = 0; i < reverseArray.length; i++) {
-                reverseArray[i] = array[array.length - i - 1];
-            }
-            if (array.length == 0 || isFilledByZeros(array)) {
-                return false;
-            } else if (areEquals(array, reverseArray)) { // możliwe prostsze rozwiązanie (Arrays.equals(array, reverseArray))
-                return true;
-            }
+        } else if (array.length == 0) {
+            return false;
+        } else if (numberComparison(array)) {
+            return true;
         }
         return false;
     }
 
-    private boolean isFilledByZeros(int[] array) {
-        int sum = 0;
-        for (int i : array) {
-            sum += i;
-        }
-        return sum == 0;
-    }
-
-    private boolean areEquals(int[] array, int[] reverseArray) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] != reverseArray[i]) {
-                return false;
+    private boolean numberComparison(int[] array) {
+        boolean status = true;
+        for (int i = 0; i < (array.length / 2); i++) {
+            if (array[i] != array[array.length - 1 - i]) {
+                status = false;
+                break;
             }
         }
-        return true;
+        return status;
     }
 }
